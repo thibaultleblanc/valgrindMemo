@@ -3,6 +3,7 @@
 ## Tuto valgrind
 
 Objectif manipuler avec Valgrind
+
 Prérequis : docker + accès aux dépôts (vim, gcc, gdb, valgrind)
 
 ## Start
@@ -16,7 +17,7 @@ docker run -ti \
             debian:latest
 ```
 
-## Simple examples
+## Basic examples
 
 ```bash
 # readelf -S affiche les symboles présents dans le header
@@ -54,6 +55,17 @@ ms_print massif-result.out
 
 ## Valgrind entre 2 points
 
+compile with : gcc [...] -I/usr/include/valgrind
+
+```c
+#include <valgrind/memcheck.h>
+/* YOUR CODE HERE */
+VALGRIND_DO_LEAK_CHECK; // --> reference check
+/* YOUR CODE HERE */
+VALGRIND_DO_ADDED_LEAK_CHECK; // --> delta
+```
+
+
 ```bash
 valgrind --leak-check=full \
          --show-leak-kinds=all \
@@ -61,3 +73,8 @@ valgrind --leak-check=full \
          --verbose \
          ./addremov.o
 ```
+
+## Usefull links and documentation
+
+https://valgrind.org/docs/manual/ms-manual.html
+https://docs.redhat.com/fr/documentation/red_hat_enterprise_linux/6/html/performance_tuning_guide/ch05s03s03#idm139680962952352
