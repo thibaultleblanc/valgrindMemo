@@ -4,10 +4,10 @@
 int main() {
     struct Node* head = NULL;
 
-    append(&head, 1);
-    append(&head, 2);
-    append(&head, 3);
-    append(&head, 4);
+    appendNode(&head, 1);
+    appendNode(&head, 2);
+    appendNode(&head, 3);
+    appendNode(&head, 4);
 
     printf("Liste chaînée: 1234 ");
     printList(head);

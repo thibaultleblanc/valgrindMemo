@@ -11,6 +11,7 @@ Prérequis : docker + accès aux dépôts (vim, gcc, gdb, valgrind)
 ```bash
 docker run -ti \
             --rm \
+            --name valgrind \
             --volume $PWD:/app \
             --workdir /app \
             --entrypoint /app/install.sh \
