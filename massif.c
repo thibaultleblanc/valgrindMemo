@@ -2,12 +2,20 @@
 
 void g(void)
 {
-    malloc(4000);
+    void *ptr = malloc(4000); // Stocker le pointeur retourné
+    if (ptr == NULL) {
+        // Gérer une éventuelle erreur d'allocation
+        exit(EXIT_FAILURE);
+    }
 }
 
 void f(void)
 {
-    malloc(2000);
+    void *ptr = malloc(2000); // Stocker le pointeur retourné
+    if (ptr == NULL) {
+        // Gérer une éventuelle erreur d'allocation
+        exit(EXIT_FAILURE);
+    }
     g();
 }
 
@@ -19,6 +27,10 @@ int main(void)
     for (i = 0; i < 10; i++)
     {
         a[i] = malloc(1000);
+        if (a[i] == NULL) {
+            // Gérer une éventuelle erreur d'allocation
+            exit(EXIT_FAILURE);
+        }
     }
 
     f();
